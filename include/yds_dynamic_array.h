@@ -5,6 +5,7 @@
 #include "yds_allocator.h"
 
 #include <memory>
+#include <cstring>
 
 class ysDynamicArrayElement {
 public:

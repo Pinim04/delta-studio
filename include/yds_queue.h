@@ -3,6 +3,22 @@
 
 #include <stdlib.h>
 
+#ifndef YDS_INLINE
+#ifdef _MSC_VER
+  #if (_MSC_VER >= 1200)
+  #define YDS_INLINE __forceinline
+  #else
+  #define YDS_INLINE __inline
+  #endif
+#else
+  #ifdef __cplusplus
+  #define YDS_INLINE inline
+  #else
+  #define YDS_INLINE
+  #endif
+#endif
+#endif
+
 template<typename Type, int InitialSize = 0, int Alignment = 1>
 class ysQueue {
 public:
@@ -41,7 +57,7 @@ public:
 
     Type *GetBuffer() { return m_array; }
 
-    __forceinline Type &operator[](int index) {
+    YDS_INLINE Type &operator[](int index) {
         return m_array[(index + m_start) % m_maxSize];
     }
 

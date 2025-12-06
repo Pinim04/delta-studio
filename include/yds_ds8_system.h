@@ -4,7 +4,9 @@
 #include "yds_audio_system.h"
 #include "yds_window.h"
 
+#ifdef _WIN32
 #include <dsound.h>
+#endif
 
 class ysDS8Device;
 
